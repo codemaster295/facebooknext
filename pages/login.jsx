@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadUser, login as loginUser } from '../store/actions/authActions';
+import { loadUser, login as loginUser, logout } from '../store/actions/authActions';
 import { Backdrop, CircularProgress } from '@mui/material'
 import { clearErrors } from '../store/actions/errorActions';
 
@@ -18,22 +18,16 @@ const login = () => {
 		setIsLoading(true)
 		dispatch(loginUser({ email, password }));
 	}
-	// useEffect(() => {
-
-	// }, [])
-	console.log("effetc tunning")
-	useEffect(() => {
-		if (auth.isAuthenticated) {
-			router.push("/")
-			setIsLoading(false)
-			dispatch(clearErrors())
-		}
-		else {
+	useEffect(()=>{
+		dispatch(logout())
+	},[])
+	useEffect(()=>{
+		if(auth.isAuthenticated){
+      router.push('/')
+			// dispatch(loadUser())
 			setIsLoading(false)
 		}
-
-
-	}, [])
+	},[auth])
 	return (
 		<div className="relative z-0">
 			<img src="" alt="" />
@@ -77,7 +71,7 @@ const login = () => {
 											<CircularProgress className="text-btn-blue " />
 										</Backdrop> : ""}
 									</div>
-									{error.status ? <h1 className="text-red-500 font-semibold tracking-widest text-center">{error.msg.msg}fd</h1> : ""}
+									{/* {error.status ? <h1 className="text-red-500 font-semibold tracking-widest text-center">{error.msg.msg}fd</h1> : ""} */}
 
 									<div className="w-1/2 block mx-auto outline-none border border-gray-400 rounded-xl text-base text-white py-2.5 px-1 bg-btn-green">
 										<button

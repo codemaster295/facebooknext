@@ -6,12 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:tailwind": "tailwind build  styles/index.css -o styles/tailwind.css "
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.5",
+    "antd": "^4.18.2",
+    "antd-img-crop": "^4.0.2",
     "next": "12.0.7",
     "next-redux-wrapper": "^7.0.5",
     "react": "17.0.2",

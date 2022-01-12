@@ -28,7 +28,6 @@ export default function (state = initialState, action) {
 				isLoading: true,
 			};
 		case USER_LOADED:
-			console.log(action.payload, "mmo");
 			return {
 				...state,
 				isAuthenticated: true,
@@ -38,7 +37,6 @@ export default function (state = initialState, action) {
 		case LOGIN_SUCCESS:
 		case REGISTER_SUCCESS:
 			localStorage.setItem("token", action.payload.token);
-			console.log(action.payload, "mmo is here");
 			return {
 				...state,
 				...action.payload,

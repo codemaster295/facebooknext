@@ -24,11 +24,11 @@ const rootReducer = combineReducers({
 // const enhancers = compose(
 //     (typeof window !== 'undefined' && window.devToolsExtension) ? window.devToolsExtension() : f => f, applyMiddleware(thunk)
 // );
+// const initStore = (initialState = null) => {
+//     return createStore(rootReducer,applyMiddleware(thunk),);
+// };
 const initStore = (initialState = null) => {
-    return createStore(rootReducer, compose(
-        applyMiddleware(thunk),
-        (global.window.devToolsExtension) ? window.devToolsExtension() : f => f
-    ));
-};
+    return createStore(rootReducer, applyMiddleware(thunk));
+  };
 
 export const wrapper = createWrapper(initStore);

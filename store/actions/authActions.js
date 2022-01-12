@@ -14,9 +14,7 @@ import {
 // Check token & load user
 export const loadUser = () => (dispatch, getState) => {
 	// User loading
-	console.log(getState, "mmoi");
 	dispatch({ type: USER_LOADING });
-	console.log(tokenConfig(getState));
 	axios
 		.get(`${process.env.BASE_URL}/auth/user`, tokenConfig(getState))
 		.then((res) =>
